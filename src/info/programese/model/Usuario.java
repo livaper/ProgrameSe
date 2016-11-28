@@ -10,10 +10,6 @@ public class Usuario {
 	private String estado;
 	
 	
-	
-	
-	
-	
 	public Usuario(String nome, String email, String login, String senha, char tipo, String cidade, String estado) {
 		super();
 		this.nome = nome;
@@ -23,6 +19,9 @@ public class Usuario {
 		this.tipo = tipo;
 		this.cidade = cidade;
 		this.estado = estado;
+	}
+	public Usuario() {
+		// TODO Auto-generated constructor stub
 	}
 	public String getNome() {
 		return nome;

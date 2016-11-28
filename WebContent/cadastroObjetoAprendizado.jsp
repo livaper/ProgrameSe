@@ -13,7 +13,7 @@
 	<body>
 		
 		<div class="top-border"></div>
-		<form method="post" action="incluir">
+		<form method="post" action="cadastroObjeto">
 			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
 			<input type="hidden" name="login" value="<%=request.getAttribute("login")%>"/>
 			<input type="hidden" name="senha" value="<%=request.getAttribute("senha")%>"/>
@@ -38,41 +38,62 @@
 
 										<div class="col-sm-6 col-md-12"><label>Título</label>
 											<input required type="text" placeholder="Digite o título do Objeto de Aprendizado" class="form-control margin-top-xs" name="titulo"/>
+											<hr>
 										</div>
 										
-										<div class="col-sm-6 col-md-4"><label>Assunto Pedagógico</label>
-											<select class="form-control margin-top-xs" name="assuntoPedagogico">
-												<option selected="selected">Selecione um Assunto Pedagógico...</option>
-												<c:forEach items="${assuntos}" var="assuntoPedagogico">
-													<option value="${assuntoPedagogico.id}">${assuntoPedagogico.titulo}</option>
-												</c:forEach>											
-											</select>
+										<div class="col-sm-6 col-md-12"><label>Assunto Pedagógico</label><br>
+											|<c:forEach items="${assuntos}" var="assuntoPedagogico">
+										  		${assuntoPedagogico.titulo} <input type="checkbox" class="checkbox-inline" id="inlineCheckbox1" name="assuntoPedagogicoIds" value="${assuntoPedagogico.id}">  |
+											</c:forEach>
+											<hr>
+										</div>
+
+										<div class="col-sm-6 col-md-12 ">
+											<label>Formas de Abordagem</label><br>
+											<c:forEach items="${formas}" var="formaAbordagem">
+												<input type="checkbox" class="checkbox-inline" id="inlineCheckbox2" name="formaAbordagem" value="${formaAbordagem.id}"> ${formaAbordagem.titulo}
+												 <br><br><b>Subabordagens:</b>
+												<c:forEach items="${formaAbordagem.formasSubAbordagem}" var="formaSubAbordagem">
+													<input type="radio" class="radio-inline" id="inlineCheckbox3" name="formaSubAbordagem" value="${formaSubAbordagem.id}"> ${formaSubAbordagem.titulo}
+												</c:forEach>
+												<hr>
+											</c:forEach>
 										</div>
 
 										<div class="col-sm-6 col-md-12"><label>Objetivo</label>
 											<input required type="text" placeholder="Digite o objetivo do Objeto de Aprendizado" class="form-control margin-top-xs" name="objetivo"/>
+										<hr>
 										</div>
 
-										<div class="col-sm-6 col-md-12"><label>Quantidade Mínima de Pessoas</label>
-											<input required type="text" placeholder="Digite a quantidade mínima de pessoas esperada para a prática" class="form-control margin-top-xs" name="quantidadeMinimaPessoas"/>
+										<div class="col-sm-6 col-md-3"><label>Quantidade Mínima de Pessoas</label>
+											<input required type="text" class="form-control margin-top-xs" name="quantidadeMinimaPessoas"/>
 										</div>
 
-										<div class="col-sm-6 col-md-12"><label>Quantidade Máxima de Pessoas</label>
-											<input required type="text" placeholder="Digite a quantidade máxima de pessoas esperada para a prática" class="form-control margin-top-xs" name="quantidadeMaximaPessoas"/>
+										<div class="col-sm-6 col-md-3"><label>Quantidade Máxima de Pessoas</label>
+											<input required type="text" class="form-control margin-top-xs" name="quantidadeMaximaPessoas"/>
 										</div>
 
-										<div class="col-sm-6 col-md-12"><label>Descrição</label>
-											<textarea required type="text" placeholder="Descreva aqui a prática" class="form-control margin-top-xs" name="descricao"/>
-										</div>
-
-										<div class="col-sm-6 col-md-12"><label>Feedback</label>
-											<textarea required type="text" placeholder="Descreva como foi sua percepção do feedback dado pela turma" class="form-control margin-top-xs" name="feedback"/>
-										</div>
-
-										<div class="col-sm-6 col-md-12"><label>Referências</label>
-											<textarea required type="text" placeholder="Coloque aqui as referências que julgar necessário para os alunos acompanharem a prática, bem como as utilizadas na elaboração do material" class="form-control margin-top-xs" name="referencias"/>
+										<div class="col-sm-6 col-md-6">
 										</div>
 										
+										<div class="col-sm-6 col-md-12">
+											<hr>
+										</div>
+										
+										<div class="col-sm-6 col-md-12"><label>Descrição</label>
+											<textarea required type="text" placeholder="Descreva aqui a prática" class="form-control margin-top-xs" rows="8" name="descricao"></textarea>
+											<hr>
+										</div>
+										
+										<div class="col-sm-6 col-md-12"><label>Feedback</label>
+											<textarea required type="text" placeholder="Descreva como foi sua percepção do feedback dado pela turma" class="form-control margin-top-xs" rows="5" name="feedback"></textarea>
+											<hr>
+										</div>
+	
+										<div class="col-sm-6 col-md-12"><label>Referências</label>
+											<textarea required type="text" placeholder="Coloque aqui as referências que julgar necessário para os alunos acompanharem a prática, bem como as utilizadas na elaboração do material" class="form-control margin-top-xs" rows="4" name="referencias"></textarea>
+											<hr>
+										</div>
 										
 									</div>
 									<br>

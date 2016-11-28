@@ -17,4 +17,12 @@ public class AssuntoPedagogicoService {
 		}
 	}
 
+	public static AssuntoPedagogico getAssuntoById(int id) {
+		try {
+			return AssuntoPedagogicoDAO.getAssuntosPedagogicoById(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

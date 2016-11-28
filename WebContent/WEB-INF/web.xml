@@ -32,6 +32,15 @@
 	    <servlet-name>ServletRedirecionaCadastroObjeto</servlet-name>
 	    <url-pattern>/redirecionaCadastroObjeto</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+	    <servlet-name>ServletCadastraObjeto</servlet-name>
+	    <servlet-class>info.programese.presentation.ServletCadastraObjeto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ServletCadastraObjeto</servlet-name>
+	    <url-pattern>/cadastroObjeto</url-pattern>
+	</servlet-mapping>
 	
 <!-- 	Wildcard - Padrões de URL não mapeados serão redirecionados para a página de login -->
 <!-- 	<servlet-mapping> -->

@@ -11,4 +11,9 @@ public class ObjetoAprendizadoService {
 		return null;
 	}
 
+	public static void cadastraNovoObjeto(ObjetoAprendizado objetoAprendizado) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

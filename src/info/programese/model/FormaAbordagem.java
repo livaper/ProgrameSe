@@ -3,6 +3,7 @@ package info.programese.model;
 import java.util.List;
 
 public class FormaAbordagem {
+	private int id;
 	private String titulo;
 	private List<FormaSubAbordagem> formasSubAbordagem;
 
@@ -20,6 +21,14 @@ public class FormaAbordagem {
 
 	public void setFormasSubAbordagem(List<FormaSubAbordagem> formasSubAbordagem) {
 		this.formasSubAbordagem = formasSubAbordagem;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 

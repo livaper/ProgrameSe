@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import info.programese.model.AssuntoPedagogico;
+import info.programese.model.FormaAbordagem;
 import info.programese.service.AssuntoPedagogicoService;
+import info.programese.service.FormaAbordagemService;
 
 @WebServlet("/ServletRedirecionaCadastroObjeto")
 public class ServletRedirecionaCadastroObjeto extends HttpServlet {
@@ -28,7 +30,8 @@ public class ServletRedirecionaCadastroObjeto extends HttpServlet {
 		String loginOperador = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		String nomeUsuario = request.getParameter("nomeUsuario");
-		List<AssuntoPedagogico> assuntos = AssuntoPedagogicoService.recuperarListaAssuntos(); 
+		List<AssuntoPedagogico> assuntos = AssuntoPedagogicoService.recuperarListaAssuntos();
+		List<FormaAbordagem> formas = FormaAbordagemService.recuperarListaFormas();
 		
 		ServletContext context = getServletContext();
 
@@ -37,6 +40,7 @@ public class ServletRedirecionaCadastroObjeto extends HttpServlet {
 		request.setAttribute("senha", senha);
 		request.setAttribute("nomeUsuario", nomeUsuario);
 		request.setAttribute("assuntos", assuntos);
+		request.setAttribute("formas", formas);
 		rd.forward(request, response);
 	}
 

@@ -14,18 +14,21 @@ import javax.servlet.http.HttpServletResponse;
 import info.programese.model.AreaComputacao;
 import info.programese.model.AssuntoPedagogico;
 import info.programese.model.FormaAbordagem;
+import info.programese.model.ObjetoAprendizado;
 import info.programese.model.Usuario;
 import info.programese.service.AreaComputacaoService;
 import info.programese.service.AssuntoPedagogicoService;
 import info.programese.service.FormaAbordagemService;
 import info.programese.service.LoginService;
+import info.programese.service.ObjetoAprendizadoService;
 import info.programese.service.UsuarioService;
 
-@WebServlet("/ServletRedirecionaMaisDetalhesObjeto")
-public class ServletRedirecionaMaisDetalhesObjeto extends HttpServlet {
+
+@WebServlet("/ServletExportarPDF")
+public class ServletExportarPDF extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ServletRedirecionaMaisDetalhesObjeto() {
+	public ServletExportarPDF() {
 		super();
 	}
 
@@ -35,6 +38,7 @@ public class ServletRedirecionaMaisDetalhesObjeto extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
+		String cadastro = "false";
 		String nomeUsuario = LoginService.autenticaUsuario(login, senha);
 		
 
@@ -45,42 +49,27 @@ public class ServletRedirecionaMaisDetalhesObjeto extends HttpServlet {
 			request.setAttribute("nomeUsuario", nomeUsuario);
 			request.setAttribute("login", login);
 			request.setAttribute("senha", senha);
+			request.setAttribute("cadastro", cadastro);
 			
 			Integer idObjeto = Integer.parseInt(request.getParameter("idObjeto"));
 			Usuario usuario = UsuarioService.getUsuarioCriadorObjeto(idObjeto);
 			List<AreaComputacao> areas = AreaComputacaoService.getAreasEmObjetoAprendizagem(idObjeto);
 			List<AssuntoPedagogico> assuntos = AssuntoPedagogicoService.getAssuntosEmObjetoAprendizagem(idObjeto);
 			List<FormaAbordagem> formas = FormaAbordagemService.getFormasEmObjetoAprendizagem(idObjeto);
+			ObjetoAprendizado objeto = ObjetoAprendizadoService.getObjetoById(idObjeto);
+			objeto.setFormasAbordagens(formas);
+			objeto.setAssuntosPedagogicos(assuntos);
+			objeto.setAreasComputacao(areas);
+			objeto.setUsuarioCriador(usuario);
 			
-			String titulo =  request.getParameter("tituloObjeto");
-			String objetivo = request.getParameter("objetivoObjeto");
-			String minimo = request.getParameter("quantidadeMinimaObjeto");
-			String maximo = request.getParameter("quantidadeMaximaObjeto");
-			String descricao = request.getParameter("descricaoObjeto");
-			String feedback = request.getParameter("feedbackObjeto");
-			String referencias= request.getParameter("referenciasObjeto");
+			GeradorTXTDetalhesObjeto.main(objeto);
 			
-			request.setAttribute("idObjeto",idObjeto);
-			request.setAttribute("nomeAutor",usuario.getNome());
-			request.setAttribute("tituloObjeto", titulo);
-			request.setAttribute("objetivoObjeto", objetivo);
-			request.setAttribute("areasObjeto", areas);
-			request.setAttribute("assuntosObjeto", assuntos);
-			request.setAttribute("formasObjeto", formas);
-			request.setAttribute("quantidadeMinimaObjeto", minimo);
-			request.setAttribute("quantidadeMaximaObjeto", maximo);
-			request.setAttribute("descricaoObjeto", descricao);
-			request.setAttribute("feedbackObjeto", feedback);
-			request.setAttribute("referenciasObjeto", referencias);
-			
-			RequestDispatcher rd = context.getRequestDispatcher("/detalhesObjeto.jsp");
+			RequestDispatcher rd = context.getRequestDispatcher("/authentication");
 			rd.forward(request, response);
 
 		} else {
 			RequestDispatcher rd = context.getRequestDispatcher("/detalhesObjeto.jsp");
-			request.setAttribute("loginInvalido", true);
 			rd.forward(request, response);
-
 		}
 	}
 

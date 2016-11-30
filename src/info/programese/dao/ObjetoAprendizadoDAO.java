@@ -128,4 +128,28 @@ public class ObjetoAprendizadoDAO {
 		conexao.close();
 		return objetos;
 	}
+
+	
+	public static ObjetoAprendizado getObjetoById(Integer idObjeto) throws SQLException {
+		String query = "SELECT * FROM objeto_aprendizado where objeto_aprendizado_id = " + idObjeto + ";";
+		Connection conexao = JDBCConnection.getConnection();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet result = sql.executeQuery(query);
+
+		List<ObjetoAprendizado> objetos = new ArrayList<ObjetoAprendizado>();
+		while (result.next()) {
+			ObjetoAprendizado objeto = new ObjetoAprendizado();
+			objeto.setId(result.getInt("objeto_aprendizado_id"));
+			objeto.setTitulo(result.getString("titulo"));
+			objeto.setDescricao(result.getString("descricao"));
+			objeto.setFeedback(result.getString("feedback"));
+			objeto.setObjetivo(result.getString("objetivo"));
+			objeto.setQuantidadeMaximaPessoas(Integer.parseInt(result.getString("quantidade_maxima_pessoas")));
+			objeto.setQuantidadeMinimaPessoas(Integer.parseInt(result.getString("quantidade_minima_pessoas")));
+			objeto.setReferencias(result.getString("referencias"));
+			objetos.add(objeto);
+		}
+		conexao.close();
+		return objetos.get(0);
+	}
 }

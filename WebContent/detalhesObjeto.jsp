@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Entrada</title>
+		<title>Programa-Se</title>
 		<link rel="stylesheet" type="text/css" href="./resources/bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="./resources/bootstrap/css/bootstrap-theme.min.css" />
  		<script src="./resources/bootstrap/js/bootstrap.min.js"></script>
@@ -18,6 +18,8 @@
 			<input type="hidden" name="login" value="<%=request.getAttribute("login")%>"/>
 			<input type="hidden" name="senha" value="<%=request.getAttribute("senha")%>"/>
 			<input type="hidden" name="nomeUsuario" value="<%=request.getAttribute("nomeUsuario")%>"/>
+			<input type="hidden" name=idObjeto value="<%=request.getAttribute("idObjeto")%>"/>
+			
 			<br><br><br>
 			<div class="container">
 				<div class="row col-md-12">
@@ -25,7 +27,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-sm-6 col-md-10">
-									<h1>Programe Se</h1>
+									<h1>Programe-Se</h1>
 								</div>
 								<div class="col-sm-6 col-md-2"><img src="./resources/bootstrap/img/logoProgrameSe.png" width="100" height="100"></div>
 								<div class="col-sm-6 col-md-10"></div>
@@ -38,6 +40,10 @@
 
 										<div class="col-sm-6 col-md-12">
 											<h3>${tituloObjeto}</h3>
+											<hr>
+										</div>
+										<div class="col-sm-6 col-md-12">
+											<h4>Autor(a): ${nomeAutor}</h4>
 											<hr>
 										</div>
 										
@@ -69,11 +75,11 @@
 										<hr>
 										</div>
 
-										<div class="col-sm-6 col-md-3"><label>Quantidade Mínima de Pessoas</label>:<br>
+										<div class="col-sm-6 col-md-3"><label>Quantidade Mínima de Pessoas:</label><br>
 											${quantidadeMinimaObjeto}
 										</div>
 
-										<div class="col-sm-6 col-md-3"><label>Quantidade Máxima de Pessoas</label>:<br>
+										<div class="col-sm-6 col-md-3"><label>Quantidade Máxima de Pessoas:</label><br>
 											${quantidadeMaximaObjeto}
 										</div>
 
@@ -101,7 +107,7 @@
 										
 									</div>
 									<br>
-									<button type="submit" class="btn btn-primary pull-right">Exportar para PDF</button>
+									<button type="submit" class="btn btn-primary pull-right">Exportar para .txt</button>
 								</div>
 						</div>
 					</div>

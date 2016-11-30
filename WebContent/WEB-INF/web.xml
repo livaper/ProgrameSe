@@ -51,7 +51,7 @@
 	    <url-pattern>/cadastroObjeto</url-pattern>
 	</servlet-mapping>
 	
-		<servlet>
+	<servlet>
 	    <servlet-name>ServletCadastroUsuario</servlet-name>
 	    <servlet-class>info.programese.presentation.ServletCadastroUsuario</servlet-class>
 	</servlet>
@@ -60,7 +60,14 @@
 	    <url-pattern>/cadastroUsuario</url-pattern>
 	</servlet-mapping>
 	
-	
+	<servlet>
+	    <servlet-name>ServletExportarPDF</servlet-name>
+	    <servlet-class>info.programese.presentation.ServletExportarPDF</servlet-class>
+	</servlet>
+		<servlet-mapping>
+	    <servlet-name>ServletExportarPDF</servlet-name>
+	    <url-pattern>/exportarPDF</url-pattern>
+	</servlet-mapping>
 	
 <!-- 	Wildcard - Padrões de URL não mapeados serão redirecionados para a página de login -->
 <!-- 	<servlet-mapping> -->

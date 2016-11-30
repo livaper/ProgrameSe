@@ -12,13 +12,13 @@ import info.programese.persistance.JDBCConnection;
 public class UsuarioDAO {
 
 	public static String autenticaUsuario(String login, String senha) throws SQLException {
-		
+
 		String query = "SELECT * FROM usuario WHERE login = '" + login + "' AND senha = '" + senha + "' ;";
 		Connection conexao = JDBCConnection.getConnection();
 		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-		ResultSet usuarios = sql.executeQuery(query); 
+		ResultSet usuarios = sql.executeQuery(query);
 		String temp = null;
-		while(usuarios.next()){
+		while (usuarios.next()) {
 			temp = usuarios.getString("nome");
 		}
 		conexao.close();
@@ -26,13 +26,13 @@ public class UsuarioDAO {
 	}
 
 	public static Usuario getUsuarioByLogin(String login) throws SQLException {
-		
+
 		String query = "SELECT * FROM usuario WHERE login = '" + login + "';";
 		Connection conexao = JDBCConnection.getConnection();
 		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet usuarios = sql.executeQuery(query);
 		Usuario usuario = new Usuario();
-		while(usuarios.next()){
+		while (usuarios.next()) {
 			usuario.setId(Integer.parseInt(usuarios.getString("usuario_id")));
 			usuario.setNome(usuarios.getString("nome"));
 			usuario.setEmail(usuarios.getString("email"));
@@ -43,8 +43,8 @@ public class UsuarioDAO {
 			usuario.setEstado(usuarios.getString("estado"));
 		}
 		conexao.close();
-		return usuario;	
-		}
+		return usuario;
+	}
 
 	public static Usuario getUsuarioById(Integer id) throws SQLException {
 		String query = "SELECT * FROM usuario WHERE usuario_id = '" + id + "';";
@@ -52,7 +52,7 @@ public class UsuarioDAO {
 		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet usuarios = sql.executeQuery(query);
 		Usuario usuario = new Usuario();
-		while(usuarios.next()){
+		while (usuarios.next()) {
 			usuario.setId(Integer.parseInt(usuarios.getString("usuario_id")));
 			usuario.setNome(usuarios.getString("nome"));
 			usuario.setEmail(usuarios.getString("email"));
@@ -63,7 +63,7 @@ public class UsuarioDAO {
 			usuario.setEstado(usuarios.getString("estado"));
 		}
 		conexao.close();
-		return usuario;	
+		return usuario;
 	}
 
 	public static Boolean verificaExistenciaLogin(String login) throws SQLException {
@@ -72,7 +72,7 @@ public class UsuarioDAO {
 		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet quantidade = sql.executeQuery(query);
 		int contagem = -1;
-		while(quantidade.next()){
+		while (quantidade.next()) {
 			contagem = quantidade.getInt("quantidade");
 		}
 		conexao.close();
@@ -80,8 +80,8 @@ public class UsuarioDAO {
 	}
 
 	public static void cadastraUsuario(Usuario usuario) throws SQLException {
-		String query = "INSERT INTO usuario (nome, email, login, senha,"+
-		" tipo, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?);";
+		String query = "INSERT INTO usuario (nome, email, login, senha,"
+				+ " tipo, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?);";
 
 		try (Connection connection = JDBCConnection.getConnection();
 				PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);) {
@@ -90,7 +90,7 @@ public class UsuarioDAO {
 			statement.setString(3, usuario.getLogin());
 			statement.setString(4, usuario.getSenha());
 			statement.setString(5, String.valueOf(usuario.getTipo()));
-			statement.setString(6,usuario.getCidade());
+			statement.setString(6, usuario.getCidade());
 			statement.setString(7, usuario.getEstado());
 
 			int affectedRows = statement.executeUpdate();
@@ -98,6 +98,27 @@ public class UsuarioDAO {
 			if (affectedRows == 0) {
 				throw new SQLException("Creating objeto failed, no rows affected.");
 			}
+		}
 	}
+
+	public static Usuario getUsuarioCriadorObjeto(Integer idObjeto) throws SQLException {
+		String query = "SELECT* FROM usuario U, objeto_aprendizado O WHERE O.usuario_id = U.usuario_id AND O.objeto_aprendizado_id ="
+				+ idObjeto + ";";
+		Connection conexao = JDBCConnection.getConnection();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet usuarios = sql.executeQuery(query);
+
+		Usuario usuario = new Usuario();
+		while (usuarios.next()) {
+			usuario.setId(Integer.parseInt(usuarios.getString("usuario_id")));
+			usuario.setNome(usuarios.getString("nome"));
+			usuario.setEmail(usuarios.getString("email"));
+			usuario.setLogin(usuarios.getString("login"));
+			usuario.setSenha(usuarios.getString("senha"));
+			usuario.setCidade(usuarios.getString("Cidade"));
+			usuario.setTipo(usuarios.getString("tipo").charAt(0));
+			usuario.setEstado(usuarios.getString("estado"));
+		}
+		return usuario;
 	}
 }

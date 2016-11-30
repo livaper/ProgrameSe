@@ -28,4 +28,13 @@ public class ObjetoAprendizadoService {
 		return sucesso;		
 	}
 
+	public static ObjetoAprendizado getObjetoById(Integer idObjeto) {
+		try {
+			return ObjetoAprendizadoDAO.getObjetoById(idObjeto);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;	
+	}
+
 }

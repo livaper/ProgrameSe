@@ -47,4 +47,14 @@ public class UsuarioService {
 		}
 	}
 
+	public static Usuario getUsuarioCriadorObjeto(Integer idObjeto) {
+		try {
+				return UsuarioDAO.getUsuarioCriadorObjeto(idObjeto);
+			}
+		 catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 }

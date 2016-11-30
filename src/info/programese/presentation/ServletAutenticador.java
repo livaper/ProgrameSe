@@ -30,11 +30,9 @@ public class ServletAutenticador extends HttpServlet {
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		String nomeUsuario = LoginService.autenticaUsuario(login, senha);
-		// response.setContentType("text/html");
-		// PrintWriter out = response.getWriter();
 		ServletContext context = getServletContext();
 
-		if (nomeUsuario != null && request.getParameter("cadastro").equals("false")) {
+		if (nomeUsuario != null) {
 			List<ObjetoAprendizado> objetos = ObjetoAprendizadoService.getTodosObjetos();
 
 			RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");

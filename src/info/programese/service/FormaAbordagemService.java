@@ -12,7 +12,6 @@ public class FormaAbordagemService {
 		try {
 			return FormaAbordagemDAO.getTodasFormasAbordagem();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			return null;
 		}
 	}
@@ -21,7 +20,14 @@ public class FormaAbordagemService {
 		try {
 			return FormaAbordagemDAO.getFormaAbordagemById(id);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			return null;
+		}
+	}
+
+	public static List<FormaAbordagem> getFormasEmObjetoAprendizagem(Integer idObjeto) {
+		try {
+			return FormaAbordagemDAO.getFormasEmObjetoAprendizagem(idObjeto);
+		} catch (SQLException e) {
 			return null;
 		}
 	}

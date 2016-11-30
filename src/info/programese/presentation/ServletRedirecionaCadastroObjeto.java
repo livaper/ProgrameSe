@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import info.programese.model.AreaComputacao;
 import info.programese.model.AssuntoPedagogico;
 import info.programese.model.FormaAbordagem;
+import info.programese.service.AreaComputacaoService;
 import info.programese.service.AssuntoPedagogicoService;
 import info.programese.service.FormaAbordagemService;
 
@@ -32,6 +34,7 @@ public class ServletRedirecionaCadastroObjeto extends HttpServlet {
 		String nomeUsuario = request.getParameter("nomeUsuario");
 		List<AssuntoPedagogico> assuntos = AssuntoPedagogicoService.recuperarListaAssuntos();
 		List<FormaAbordagem> formas = FormaAbordagemService.recuperarListaFormas();
+		List<AreaComputacao> areas = AreaComputacaoService.getTodasAreasComputacao();
 		
 		ServletContext context = getServletContext();
 
@@ -41,6 +44,7 @@ public class ServletRedirecionaCadastroObjeto extends HttpServlet {
 		request.setAttribute("nomeUsuario", nomeUsuario);
 		request.setAttribute("assuntos", assuntos);
 		request.setAttribute("formas", formas);
+		request.setAttribute("areas", areas);
 		rd.forward(request, response);
 	}
 

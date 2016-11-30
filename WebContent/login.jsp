@@ -27,6 +27,11 @@
 								<c:if test="${loginInvalido == true}"> 
 									<div class="alert alert-danger" role="alert">Nome de usuario ou senha inválidos!</div>
 								</c:if>
+								
+								<c:if test="${loginExistente == false}"> 
+									<div class="alert alert-success" >Cadastro realizado com sucesso!</div>
+								</c:if>
+								
 								<hr>
 									<div class="form-group">
 										<label>Nome de Usuario</label>
@@ -36,7 +41,8 @@
 										<label>Senha</label>
 										<input required type="password" class="form-control" placeholder="Digite a Senha" name="senha"/>
 									</div>
-									<button type="submit" class="btn btn-primary pull-right">Entrar</button>
+									<button type="submit" class="btn btn-primary" name="cadastro" value="true">Cadastre-se</button>
+									<button type="submit" class="btn btn-primary pull-right" name="cadastro" value="false">Entrar</button>
 							</div>
 						</div>
 					</div>

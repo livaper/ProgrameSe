@@ -1,6 +1,7 @@
 package info.programese.presentation;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import info.programese.model.ObjetoAprendizado;
 import info.programese.service.LoginService;
+import info.programese.service.ObjetoAprendizadoService;
 
 
 
@@ -31,18 +34,22 @@ public class ServletAutenticador extends HttpServlet {
 		// PrintWriter out = response.getWriter();
 		ServletContext context = getServletContext();
 
-		if (nomeUsuario != null) {
-		//	List<ObjetoAprendizado> objetos = ObjetoAprendizadoService.getTodosObjetos();
+		if (nomeUsuario != null && request.getParameter("cadastro").equals("false")) {
+			List<ObjetoAprendizado> objetos = ObjetoAprendizadoService.getTodosObjetos();
 
 			RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
 			request.setAttribute("nomeUsuario", nomeUsuario);
 			request.setAttribute("login", login);
 			request.setAttribute("senha", senha);
-		//	request.setAttribute("objetos", objetos);
+			request.setAttribute("objetos", objetos);
 
 			rd.forward(request, response);
 
-		} else {
+		} else if (request.getParameter("cadastro").equals("true")) {
+			RequestDispatcher rd = context.getRequestDispatcher("/cadastroUsuario.jsp");
+			rd.forward(request, response);
+		}
+		else {
 			RequestDispatcher rd = context.getRequestDispatcher("/login.jsp");
 			request.setAttribute("loginInvalido", true);
 			rd.forward(request, response);

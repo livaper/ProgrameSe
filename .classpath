@@ -10,5 +10,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/Users/liviapereira/persistence-api-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/Users/liviapereira/javax.servlet-api-3.1.0.jar"/>
+	<classpathentry kind="lib" path="/Users/liviapereira/Documents/workspace/ProgrameSe/dependencies/org.springframework.web-sources-3.2.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import info.programese.model.AssuntoPedagogico;
@@ -48,5 +47,24 @@ public class AssuntoPedagogicoDAO {
 
 		conexao.close();
 		return assuntos.get(0);
+	}
+
+	public static List<AssuntoPedagogico> getAssuntosEmObjetoAprendizagem(Integer idObjeto) throws SQLException {
+		String query = "SELECT * FROM assunto_pedagogico A , assunto_pedagogico_objeto_aprendizado O where O.objeto_aprendizado_id = +" +idObjeto 
+				+ " AND A.assunto_pedagogico_id = O.assunto_pedagogico_id ;";
+		Connection conexao = JDBCConnection.getConnection();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet result = sql.executeQuery(query);
+
+		List<AssuntoPedagogico> assuntos = new ArrayList<AssuntoPedagogico>();
+		while (result.next()) {
+			AssuntoPedagogico assunto = new AssuntoPedagogico();
+			assunto.setId(result.getInt("assunto_pedagogico_id"));
+			assunto.setTitulo(result.getString("titulo"));
+
+			assuntos.add(assunto);
+		}
+		conexao.close();
+		return assuntos;
 	}
 }

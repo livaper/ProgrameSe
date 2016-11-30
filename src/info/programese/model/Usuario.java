@@ -1,13 +1,15 @@
 package info.programese.model;
 
 public class Usuario {
+	private Integer id;
 	private String nome;
 	private String email;
 	private String login;
 	private String senha;
-	private char tipo; // o tipo pode ser 'E' para estudante, 'P' para professor;
+	private char tipo; // o tipo pode ser 'E' para estudante, 'P' para professor e 'O' para outros;
 	private String cidade;
 	private String estado;
+	
 	
 	
 	public Usuario(String nome, String email, String login, String senha, char tipo, String cidade, String estado) {
@@ -64,5 +66,11 @@ public class Usuario {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }

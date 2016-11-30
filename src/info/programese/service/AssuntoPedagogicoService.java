@@ -25,4 +25,13 @@ public class AssuntoPedagogicoService {
 			return null;
 		}
 	}
+
+	public static List<AssuntoPedagogico> getAssuntosEmObjetoAprendizagem(Integer idObjeto) {
+		try {
+			return AssuntoPedagogicoDAO.getAssuntosEmObjetoAprendizagem(idObjeto);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

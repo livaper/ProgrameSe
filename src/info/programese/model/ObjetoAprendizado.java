@@ -3,15 +3,17 @@ package info.programese.model;
 import java.util.List;
 
 public class ObjetoAprendizado {
+	private Integer id;
 	private Usuario usuarioCriador;
 	private String titulo;
 	private String objetivo;
-	private int quantidadeMinimaPessoas;
-	private int quantidadeMaximaPessoas;
+	private Integer quantidadeMinimaPessoas;
+	private Integer quantidadeMaximaPessoas;
 	private String descricao;
 	private String feedback;
 	private String referencias;
 	private List<AssuntoPedagogico> assuntosPedagogicos;
+	private List<AreaComputacao> areasComputacao;
 	private List<FormaAbordagem> formasAbordagens;
 	private List<Comentario> comentarios;
 	public Usuario getUsuarioCriador() {
@@ -32,16 +34,16 @@ public class ObjetoAprendizado {
 	public void setObjetivo(String objetivo) {
 		this.objetivo = objetivo;
 	}
-	public int getQuantidadeMinimaPessoas() {
+	public Integer getQuantidadeMinimaPessoas() {
 		return quantidadeMinimaPessoas;
 	}
-	public void setQuantidadeMinimaPessoas(int quantidadeMinimaPessoas) {
+	public void setQuantidadeMinimaPessoas(Integer quantidadeMinimaPessoas) {
 		this.quantidadeMinimaPessoas = quantidadeMinimaPessoas;
 	}
-	public int getQuantidadeMaximaPessoas() {
+	public Integer getQuantidadeMaximaPessoas() {
 		return quantidadeMaximaPessoas;
 	}
-	public void setQuantidadeMaximaPessoas(int quantidadeMaximaPessoas) {
+	public void setQuantidadeMaximaPessoas(Integer quantidadeMaximaPessoas) {
 		this.quantidadeMaximaPessoas = quantidadeMaximaPessoas;
 	}
 	public String getDescricao() {
@@ -79,6 +81,18 @@ public class ObjetoAprendizado {
 	}
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public List<AreaComputacao> getAreasComputacao() {
+		return areasComputacao;
+	}
+	public void setAreasComputacao(List<AreaComputacao> areasComputacao) {
+		this.areasComputacao = areasComputacao;
 	}
 	
 }

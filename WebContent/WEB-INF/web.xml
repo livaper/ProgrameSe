@@ -32,6 +32,15 @@
 	    <servlet-name>ServletRedirecionaCadastroObjeto</servlet-name>
 	    <url-pattern>/redirecionaCadastroObjeto</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+	    <servlet-name>ServletRedirecionaMaisDetalhesObjeto</servlet-name>
+	    <servlet-class>info.programese.presentation.ServletRedirecionaMaisDetalhesObjeto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ServletRedirecionaMaisDetalhesObjeto</servlet-name>
+	    <url-pattern>/redirecionaMaisDetalhesObjeto</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 	    <servlet-name>ServletCadastraObjeto</servlet-name>
@@ -41,6 +50,17 @@
 	    <servlet-name>ServletCadastraObjeto</servlet-name>
 	    <url-pattern>/cadastroObjeto</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+	    <servlet-name>ServletCadastroUsuario</servlet-name>
+	    <servlet-class>info.programese.presentation.ServletCadastroUsuario</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ServletCadastroUsuario</servlet-name>
+	    <url-pattern>/cadastroUsuario</url-pattern>
+	</servlet-mapping>
+	
+	
 	
 <!-- 	Wildcard - Padrões de URL não mapeados serão redirecionados para a página de login -->
 <!-- 	<servlet-mapping> -->

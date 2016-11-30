@@ -1,8 +1,8 @@
 package info.programese.model;
 
-public class FormaSubAbordagem {
-	private String titulo;
+public class AreaComputacao {
 	private int id;
+	private String titulo;
 
 	public String getTitulo() {
 		return titulo;
@@ -12,10 +12,11 @@ public class FormaSubAbordagem {
 		this.titulo = titulo;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

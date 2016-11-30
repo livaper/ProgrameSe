@@ -42,8 +42,16 @@
 										</div>
 										
 										<div class="col-sm-6 col-md-12"><label>Assunto Pedagógico</label><br>
-											|<c:forEach items="${assuntos}" var="assuntoPedagogico">
-										  		${assuntoPedagogico.titulo} <input type="checkbox" class="checkbox-inline" id="inlineCheckbox1" name="assuntoPedagogicoIds" value="${assuntoPedagogico.id}">  |
+											<c:forEach items="${assuntos}" var="assuntoPedagogico">
+										  		<input type="checkbox" class="checkbox-inline" id="inlineCheckbox1" name="assuntoPedagogicoIds" value="${assuntoPedagogico.id}"> <span class="label label-primary">${assuntoPedagogico.titulo}</span>  
+											</c:forEach>
+											<hr>
+										</div>
+										
+										<div class="col-sm-6 col-md-12 ">
+											<label>Conceitos de Computação </label><br>
+											<c:forEach items="${areas}" var="areaComputacao">
+												<input type="checkbox" class="checkbox-inline" id="inlineCheckbox2" name="areaComputacao" value="${areaComputacao.id}"> <span class="label label-info">${areaComputacao.titulo}</span>
 											</c:forEach>
 											<hr>
 										</div>
@@ -51,15 +59,11 @@
 										<div class="col-sm-6 col-md-12 ">
 											<label>Formas de Abordagem</label><br>
 											<c:forEach items="${formas}" var="formaAbordagem">
-												<input type="checkbox" class="checkbox-inline" id="inlineCheckbox2" name="formaAbordagem" value="${formaAbordagem.id}"> ${formaAbordagem.titulo}
-												 <br><br><b>Subabordagens:</b>
-												<c:forEach items="${formaAbordagem.formasSubAbordagem}" var="formaSubAbordagem">
-													<input type="radio" class="radio-inline" id="inlineCheckbox3" name="formaSubAbordagem" value="${formaSubAbordagem.id}"> ${formaSubAbordagem.titulo}
-												</c:forEach>
-												<hr>
+												<input type="checkbox" class="checkbox-inline" id="inlineCheckbox2" name="formaAbordagem" value="${formaAbordagem.id}"> <span class="label label-warning">${formaAbordagem.titulo}</span>
 											</c:forEach>
+											<hr>
 										</div>
-
+										
 										<div class="col-sm-6 col-md-12"><label>Objetivo</label>
 											<input required type="text" placeholder="Digite o objetivo do Objeto de Aprendizado" class="form-control margin-top-xs" name="objetivo"/>
 										<hr>

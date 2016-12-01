@@ -11,7 +11,6 @@
 		<link rel="stylesheet" type="text/css" href="./resources/bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="./resources/bootstrap/css/bootstrap-theme.min.css" /> 		
 		<script src="./resources/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="./resources/searchInput.js"></script>
 	</head>
 	<body>
 		<div class="top-border"></div>
@@ -66,8 +65,8 @@
 								<br>
 							
 								<hr>
-								<div class="table-responsive">
-									<h3>Buscar um objeto </h3><input id="searchInput" placeholder="Type To Filter"></h3>
+								<div id="objetos" class="table-responsive">
+									<h3>Buscar um objeto </h3><input class="search" placeholder="Buscar objeto"></h3>
 									<br><br><br>
 									<table class="table table-hover">
 										<thead class="table-head-brown">
@@ -79,26 +78,26 @@
 												<th></th>
 											</tr>
 										</thead>
-										<tbody>
+										<tbody class="list">
 											<c:forEach items="${objetos}" var="objeto">
 												<tr>
-													<td><a href=/detalheObjeto.jsp?id=${objeto.id}>${objeto.titulo}</a></td>
+													<td class="titulo"><a href=/detalheObjeto.jsp?id=${objeto.id}>${objeto.titulo}</a></td>
 													
 													<td>
 														<c:forEach items="${objeto.assuntosPedagogicos}" var="assunto">
-															<div><span class="label label-primary">${assunto.titulo}</span></div><br>  
+															<div class="assunto"><span class="label label-primary">${assunto.titulo}</span></div><br>  
 														</c:forEach>
 													</td>
 													
 													<td>
 														<c:forEach items="${objeto.areasComputacao}" var="area">
-															<div><span class="label label-info">${area.titulo} </span></div><br>
+															<div class="area"><span class="label label-info">${area.titulo} </span></div><br>
 														</c:forEach>
 													</td>
 													
 													<td>
 														<c:forEach items="${objeto.formasAbordagens}" var="forma">
-															<span class="label  label-warning">${forma.titulo}</span><br><br>
+															<div class="forma"><span class="label  label-warning">${forma.titulo}</span></div><br>
 														</c:forEach>
 																											
 													</td>
@@ -133,5 +132,14 @@
 				</div>
 			</div>
 		</div>
+	<script src="http://listjs.com/assets/javascripts/list.min.js"></script>
+	
+	<script>
+		var options = {
+				  valueNames: [ 'titulo', 'assunto', 'forma', 'area' ]
+		};
+	
+		var userList = new List('objetos', options);
+	</script>	
 	</body>
 </html>

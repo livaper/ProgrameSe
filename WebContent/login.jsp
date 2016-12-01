@@ -25,7 +25,7 @@
 								<img src="./resources/bootstrap/img/logoProgrameSe.png" width="100" height="100">
 								<h3>Programe-Se</h3>
 								<c:if test="${loginInvalido == true}"> 
-									<div class="alert alert-danger" role="alert">Nome de usuario ou senha inválidos!</div>
+									<div class="alert alert-danger" role="alert">Login ou senha inválidos!</div>
 								</c:if>
 								
 								<c:if test="${loginExistente == false}"> 
@@ -34,7 +34,7 @@
 								
 								<hr>
 									<div class="form-group">
-										<label>Nome de Usuario</label>
+										<label>Login</label>
 										<input required type="text" placeholder="Digite o nome de usuario" class="form-control" name="login"/>
 									</div>
 									<div class="form-group">

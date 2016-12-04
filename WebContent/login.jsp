@@ -41,8 +41,9 @@
 										<label>Senha</label>
 										<input required type="password" class="form-control" placeholder="Digite a Senha" name="senha"/>
 									</div>
-									<button type="submit" class="btn btn-primary" name="cadastro" value="false">Entrar</button>
-									<button type="submit" class="btn btn-primary pull-right" name="cadastro" value="true">Cadastre-se</button>
+									<button type="submit" class="btn btn-primary " name="cadastro" value="true">Cadastre-se</button>
+									<button type="submit" class="btn btn-primary pull-right" name="cadastro" value="false">Entrar</button>
+									
 									
 							</div>
 						</div>
